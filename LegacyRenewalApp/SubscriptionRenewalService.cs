@@ -46,7 +46,7 @@ namespace LegacyRenewalApp
                 throw new InvalidOperationException("Inactive customers cannot renew subscriptions");
             }
 
-            decimal baseAmount = (plan.MonthlyPricePerSeat * seatCount * 12m) + plan.SetupFee;
+            decimal baseAmount = plan.GetBaseAmount(seatCount);
             decimal discountAmount = 0m;
             string notes = string.Empty;
 

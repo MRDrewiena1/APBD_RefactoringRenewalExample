@@ -7,5 +7,10 @@ namespace LegacyRenewalApp
         public decimal MonthlyPricePerSeat { get; set; }
         public decimal SetupFee { get; set; }
         public bool IsEducationEligible { get; set; }
+
+        public decimal GetBaseAmount(int seatCount)
+        {
+            return (this.MonthlyPricePerSeat * seatCount * 12m) + this.SetupFee;
+        }
     }
 }
