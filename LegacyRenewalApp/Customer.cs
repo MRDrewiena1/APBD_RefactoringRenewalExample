@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace LegacyRenewalApp
 {
     public class Customer
@@ -10,5 +12,17 @@ namespace LegacyRenewalApp
         public int YearsWithCompany { get; set; }
         public int LoyaltyPoints { get; set; }
         public bool IsActive { get; set; }
+
+        public decimal GetTaxRate()
+        {
+            var taxDictionary = new Dictionary<string, decimal>();
+            
+            taxDictionary.Add("Poland", 0.23m);
+            taxDictionary.Add("Germany", 0.19m);
+            taxDictionary.Add("Czech Republic", 0.21m);
+            taxDictionary.Add("Norway", 0.25m);
+            
+            return taxDictionary.GetValueOrDefault(Country,0.20m);
+        }
     }
 }
