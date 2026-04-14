@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace LegacyRenewalApp;
 
-public class SupportFeeResolver
+public class SupportFeeCalculator
 {
     private static readonly Dictionary<string, decimal> Fees = new()
     {

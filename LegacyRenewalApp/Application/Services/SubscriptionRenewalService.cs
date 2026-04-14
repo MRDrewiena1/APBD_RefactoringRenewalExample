@@ -12,7 +12,7 @@ namespace LegacyRenewalApp
         private ICustomerRepository _customerRepository;
         private ISubscriptionPlanRepository _plans;
         private IEnumerable<IDiscountStrategy> _discountStrategies;
-        private SupportFeeResolver _supportFeeResolver;
+        private SupportFeeCalculator _supportFeeResolver;
         private PaymentFeeCalculator _paymentFeeCalculator;
         private IBillingGateway _billingGateway;
         private RenewalRequestValidator _validator;
@@ -27,7 +27,7 @@ namespace LegacyRenewalApp
                     new TeamSizeDiscountStrategy(),
                     new LoyaltyPointsDiscountStrategy()
                 ],
-                new SupportFeeResolver(),
+                new SupportFeeCalculator(),
                 new PaymentFeeCalculator(),
                 new LegacyBillingGatewayAdapter(),
                 new RenewalRequestValidator()) {}
@@ -36,7 +36,7 @@ namespace LegacyRenewalApp
             ICustomerRepository customerRepository,
             ISubscriptionPlanRepository plans,
             IEnumerable<IDiscountStrategy> discountStrategies,
-            SupportFeeResolver supportFeeResolver,
+            SupportFeeCalculator supportFeeResolver,
             PaymentFeeCalculator paymentFeeCalculator,
             IBillingGateway billingGateway,
             RenewalRequestValidator validator)
